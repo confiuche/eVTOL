@@ -38,9 +38,25 @@ export const createUserCtr = async(req,res,next) => {
 export const userLoginCtr = async(req,res,next) => {
     const {email, password} = req.body;
     try {
+        //check if email already register
+        const isUserFound = await User.findOne({email})
+        if(!isUserFound){
+            return next(AppError("Wrong login details",401))
+        }
+
+        //get password
+        const isPasswordFound = await bcrypt.compare(password,isUserFound.password)
+        if(!isPasswordFound){
+            return next(AppError("Wrong login details",401))
+        }
+
         res.json({
             status:"SUCCESS",
-            data:"Login successfully"
+            data:{
+                firstname:isUserFound.firstname,
+                lastname:isUserFound.lastname,
+                email:isUserFound.email
+            }
         })
     } catch (error) {
         next(AppError(error.message))
