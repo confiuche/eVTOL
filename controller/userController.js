@@ -1,6 +1,7 @@
 import User from "../model/userModel.js"
 import AppError from "../utils/AppErr.js"
 import bcrypt from 'bcrypt'
+import generateToken from '../utils/generateToken.js';
 
 export const createUserCtr = async(req,res,next) => {
     const { firstname, lastname, phoneNumber, profilephoto, email, password } = req.body;
@@ -55,7 +56,8 @@ export const userLoginCtr = async(req,res,next) => {
             data:{
                 firstname:isUserFound.firstname,
                 lastname:isUserFound.lastname,
-                email:isUserFound.email
+                email:isUserFound.email,
+                token:generateToken(isUserFound._id)
             }
         })
     } catch (error) {
