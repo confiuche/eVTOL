@@ -36,10 +36,16 @@ const userSchema = new mongoose.Schema({
         enum:["Admin","Guest"],
         default:"Guest"
     },
-    medical:[
+    bookings:[
         {
             type:mongoose.Schema.Types.ObjectId,
-            ref:"Medic"
+            ref:"Booking"
+        },
+    ],
+    dispatchs:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Dispatch"
         }
     ]
 },
