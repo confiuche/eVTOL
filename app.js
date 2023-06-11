@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import userRoute from "./route/userRoute.js";
 import globalErrorHandler from "./middlewears/globalErrorHandler.js";
 import { database } from "./config/dBconnect.js";
+import bookingRoute from "./route/bookingRoute.js";
 
 
 dotenv.config();
@@ -15,5 +16,6 @@ app.use(globalErrorHandler)
 const PORT = process.env.PORT || 8080
 
 app.use("/api/v1/users", userRoute)
+app.use("/api/v1/booking", bookingRoute)
 
 app.listen(PORT, console.log(`App Started at ${PORT}`))
