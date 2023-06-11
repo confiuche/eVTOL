@@ -4,3 +4,7 @@ EMAIL_ADDRESS =
 EMAIL_PASSWORD =
 
 DB_CONNECT =
+
+//jwt web token
+JWT_KEY = eVTOL
+TOKEN_EXPIRES = 1day
