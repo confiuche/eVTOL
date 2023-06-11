@@ -15,11 +15,11 @@ const bookingSchema = new mongoose.Schema(
         type:String,
         required:[true]
     },
-    code:{
+    bookingCode:{
         type:String,
         required:[true,"code is required"],
     },
-    PickUp:{
+    PickUpLocation:{
         type:String,
         required:[true]
     },
@@ -33,7 +33,8 @@ const bookingSchema = new mongoose.Schema(
     },
     status:{
         type:String,
-        default:IDLE
+        enum:["IDLE","LOADING","LOADED","DELIVERING","DELIVERED","RETURNING"],
+        default:"IDLE"
     },
     user:{
         type:mongoose.Schema.Types.ObjectId,
