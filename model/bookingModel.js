@@ -15,7 +15,7 @@ const bookingSchema = new mongoose.Schema(
         type:String,
         required:[true]
     },
-    bookingCode:{
+    trackingCode:{
         type:String,
         required:[true,"code is required"],
     },
