@@ -11,6 +11,7 @@ import {
 import { isLogin } from "../middlewears/isLogin.js";
 import { isAdmin } from "../middlewears/isAdmin.js";
 import { isDispatch } from "../middlewears/isDispatch.js";
+import { validateUser } from "../middlewears/userValidation.js";
 
 
 const userRoute = express.Router();
