@@ -47,7 +47,13 @@ const userSchema = new mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId,
             ref:"Dispatch"
         }
-    ]
+    ],
+    resetToken:{
+        type:String,
+    },
+    reseTokenExpiration:{
+        type:Date,
+    },
 },
 {
     timestamps:true,
