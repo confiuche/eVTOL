@@ -8,6 +8,9 @@ import {
      userLoginCtr 
     } from "../controller/userController.js";
 import { isLogin } from "../middlewears/isLogin.js";
+import { isAdmin } from "../middlewears/isAdmin.js";
+import { isDispatch } from "../middlewears/isDispatch.js";
+
 
 const userRoute = express.Router();
 
