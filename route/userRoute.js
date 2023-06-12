@@ -1,6 +1,7 @@
 import express from "express"
 import {
      createUserCtr, 
+     displayUserByAdminCtr, 
      forgetPasswordCtr, 
      passwordSettingCtr, 
      profileCtr, 
@@ -25,6 +26,7 @@ userRoute.post("/reset-password", resetPasswordCtr)
 //password setting
 userRoute.put("/security",isLogin, passwordSettingCtr)
 //display all user by admin
+userRoute.get("/display-all-by-admin",isLogin,isAdmin,displayUserByAdminCtr)
 
 
 
