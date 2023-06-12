@@ -211,3 +211,18 @@ export const forgetPasswordCtr = async(req, res, next) => {
       next(AppError(error.message))
     }
   }
+
+
+  //display all user by Admin
+  export const displayUserByAdmin = async (req, res, next) => {
+    try {
+      const user = await User.find({})
+
+      res.json({
+        status:"SUCCESS",
+        data:user
+      })
+    } catch (error) {
+      next(AppError(error.message))
+    }
+  }
