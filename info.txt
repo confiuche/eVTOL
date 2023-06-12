@@ -8,3 +8,7 @@ DB_CONNECT =
 //jwt web token
 JWT_KEY = eVTOL
 TOKEN_EXPIRES = 1day
+
+#smtp
+EMAIL_ADDRESS = 
+EMAIL_PASSWORD = 
