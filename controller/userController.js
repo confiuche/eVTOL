@@ -214,7 +214,7 @@ export const forgetPasswordCtr = async(req, res, next) => {
 
 
   //display all user by Admin
-  export const displayUserByAdmin = async (req, res, next) => {
+  export const displayUserByAdminCtr = async (req, res, next) => {
     try {
       const user = await User.find({})
 
