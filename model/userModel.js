@@ -31,9 +31,13 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default:false
     },
+    isDispatch:{
+        type:Boolean,
+        default:false
+    },
     role:{
         type:String,
-        enum:["Admin","Guest"],
+        enum:["Admin","Dispatch","Guest"],
         default:"Guest"
     },
     bookings:[
