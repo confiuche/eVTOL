@@ -24,6 +24,7 @@ userRoute.post("/forget-password", forgetPasswordCtr)
 userRoute.post("/reset-password", resetPasswordCtr)
 //password setting
 userRoute.put("/security",isLogin, passwordSettingCtr)
+//display all user by admin
 
 
 
