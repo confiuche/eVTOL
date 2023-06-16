@@ -15,7 +15,7 @@ app.use(globalErrorHandler)
 
 const PORT = process.env.PORT || 8080
 
-app.use("/api/v1/users", userRoute)
-app.use("/api/v1/booking", bookingRoute)
+app.use("/api/v1/evtol/users", userRoute)
+app.use("/api/v1/evtol/booking", bookingRoute)
 
 app.listen(PORT, console.log(`App Started at ${PORT}`))
