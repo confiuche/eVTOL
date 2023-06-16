@@ -70,6 +70,51 @@ export const userLoginCtr = async(req,res,next) => {
 }
 
 
+//upload profile photo
+export const profilePhotoUploadCtrl = async(req, res, next) =>{
+  try {
+      //find the user whose is uploading profile
+      const userProfileToBeUpdated = await User.findById(req.userAuth);
+      if(!userProfileToBeUpdated){
+          res.json({
+              status:"error",
+              message:"User not found"
+          })
+      }
+
+      //check if user is blocked
+      if(userProfileToBeUpdated.isBlocked){
+          return res.json({
+              status:"error",
+              message:"Access denied because your account is presently blocked"
+          })
+      }
+
+      console.log(req.file);
+      if(req.file){
+          await User.findByIdAndUpdate(req.userAuth,{
+              $set:{
+                  profilephoto:req.file.path
+              },
+          },{
+              new:true
+          }
+              );
+              res.json({
+                  status:"success",
+                  data:"profile image uploaded successfully"
+              })
+      }
+
+
+      
+  } catch (error) {
+      res.json(error.message)
+  }
+}
+
+
+
 export const profileCtr = async (req, res, next) =>{
     //userid = req.params.id
     //console.log(userid);
@@ -226,3 +271,4 @@ export const forgetPasswordCtr = async(req, res, next) => {
       next(AppError(error.message))
     }
   }
+
