@@ -11,10 +11,6 @@ const bookingSchema = new mongoose.Schema(
         type:String,
         required:[true,"weight is required"]
     },
-    dimension:{
-        type:String,
-        required:[true]
-    },
     trackingCode:{
         type:String,
         required:[true,"code is required"],
@@ -45,6 +41,11 @@ const bookingSchema = new mongoose.Schema(
         type:mongoose.Schema.Types.ObjectId,
         ref:"Dispatch",
         required:[true]
+    },
+    evtol:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"eVTOL",
+        require:true,
     },
 },
 {

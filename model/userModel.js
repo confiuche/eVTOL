@@ -40,11 +40,17 @@ const userSchema = new mongoose.Schema({
         enum:["Admin","Dispatch","Guest"],
         default:"Guest"
     },
-    bookings:[
+    eVTOL:[
         {
             type:mongoose.Schema.Types.ObjectId,
-            ref:"Booking"
+            ref:"eVTOL"
         },
+    ],
+        bookings:[
+            {
+                type:mongoose.Schema.Types.ObjectId,
+                ref:"Booking"
+            },
     ],
     dispatchs:[
         {
