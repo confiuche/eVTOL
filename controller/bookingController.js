@@ -3,12 +3,11 @@ import Booking from "../model/bookingModel.js"
 import AppError from "../utils/AppErr.js";
 
 export const createBookingCtr = async (req, res, next) => {
-    const {nameOfMedication,weight,dimension,image,trackingCode,PickUpLocation,Destination} = req.body;
+    const {nameOfMedication,weight,image,trackingCode,PickUpLocation,Destination} = req.body;
     try {
         const createBooking = await Booking.create({
             nameOfMedication,
             weight,
-            dimension,
             trackingCode,
             PickUpLocation,
             Destination
