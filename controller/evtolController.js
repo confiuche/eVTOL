@@ -7,9 +7,13 @@ import Location from "../model/locationModel.js";
 
 
 export const searchForEvtolAndPrice = async(req,res,next) => {
-    const { pickUpLocation,destination,date,weight,model,battery,amount } = req.body
-    model = "Lightweight"
-    amount = "25687"
+    const { pickUpLocation,destination,date,weight,battery } = req.body
+    const model = "Middleweight"
+    const amount = 27823
+
+    if(battery === "25%"){
+        next(AppError("Sorry we cant load you because the battery is low"))
+    }
     try {
         const user = await User.findById(req.userAuth)
 
