@@ -26,20 +26,24 @@ const evtolSchema = new mongoose.Schema(
         },
         date:{
             type:Date,
+            required:true
         },
         weight:{
             type:Number,
             required:true,
         },
-        model:{
-            type:String,
-        },
         battery:{
             type:String,
         },
         amount:{
-            type:Number
-        }
+            type:Number,
+            enum:[10000, 27823, 33245, 48625, 56897]
+        },
+        model:{
+            type:String,
+            enum:["Lightweight", "Middleweight", "Cruiserweight", "Heavyweight"],
+            //default:"Bronze",
+        },
     }
 )
 
