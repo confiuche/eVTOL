@@ -40,12 +40,12 @@ const userSchema = new mongoose.Schema({
         enum:["Admin","Dispatch","Guest"],
         default:"Guest"
     },
-    eVTOL:[
-        {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"eVTOL"
-        },
-    ],
+    // eVTOL:[
+    //     {
+    //         type:mongoose.Schema.Types.ObjectId,
+    //         ref:"eVTOL"
+    //     },
+    // ],
         bookings:[
             {
                 type:mongoose.Schema.Types.ObjectId,
