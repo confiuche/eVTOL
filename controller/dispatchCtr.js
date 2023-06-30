@@ -103,7 +103,7 @@ export const returningCtr = async (req, res, next) => {
     try {
         const dispatchId = req.params.id
 
-        const dispTCH = await Booking.findById(dispatchId)
+        const dispTCH = await Booking.findById(dispatchId);
 
         if(!dispTCH){
             return next(AppError("Sorry evtol model is not found"))
