@@ -55,7 +55,7 @@ export const createBookingCtr = async (req, res, next) => {
             nameOfMedication,
             weight,
             trackingCode,
-            status:"LOADING",
+            status:"IDLE",
             image: req?.file?.path,
         },
         {
@@ -65,6 +65,17 @@ export const createBookingCtr = async (req, res, next) => {
         res.json({
             status:"SUCCESS",
             data:createBooking
+        })
+    } catch (error) {
+        next(AppError(error.message))
+    }
+}
+
+export const displayBooking = async (req, res, next) => {
+    try {
+        res.json({
+            status:"SUCCESS",
+            data:""
         })
     } catch (error) {
         next(AppError(error.message))
