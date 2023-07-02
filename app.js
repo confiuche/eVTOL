@@ -21,6 +21,6 @@ const PORT = process.env.PORT || 8080
 app.use("/api/v1/evtol/users", userRoute)
 app.use("/api/v1/evtol", bookingRoute)
 app.use("/api/v1/evtol/location", locationRoute)
-app.use("/api/v1/evtol",dispatchRoute)
+app.use("/api/v1/evtol/dispatch",dispatchRoute)
 
 app.listen(PORT, console.log(`App Started at ${PORT}`))
