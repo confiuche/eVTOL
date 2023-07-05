@@ -5,6 +5,7 @@ import Dispatch from "../model/dispatchModel.js";
 import mongoose from "mongoose";
 
 
+//display all booked
 export const displayAllBookedCtr = async (req, res, next) => {
     try {
         const displayAllBooked = await Booking.find({}).populate("user")
@@ -17,7 +18,6 @@ export const displayAllBookedCtr = async (req, res, next) => {
         next(AppError(error.message))
     }
 }
-
 
 
 export const loadingCtr = async (req, res, next) => {
@@ -33,26 +33,19 @@ export const loadingCtr = async (req, res, next) => {
         //const tracking = Booking.findById({id})
         //console.log(tracking);
         const loggedUser = req.userAuth
+       // const state = ["LOADING","LOADED","DELIVERING","DELIVERED","RETURNING"]
 
         //const trackId = await Booking.findOne({trackingCode:mongoose.Types.trackingCode, user:loggedUser, })
         const trackId = await Booking.findOne(dispatchId)
+        //const statusInfo = await Booking.findOne(state)
+//console.log(state);
         
-
-        // if(dispatchId === trackId){
-        //     console.log("Correct");
-        // }else{
-        //     console.log("Incorrect");
-        // }
-
           if(!trackId){
-              return next(AppError("Sorry evtol model is not found"))
-          }
-
-          const statusInfo = await Booking.f
-
-          if(_status === "RETURNING"){
-            next(AppError("hfgfgfgfgfg"));
-          }
+              return next(AppError("Tracking code not found. Either your tracking code is invalid or evtol not booked",404))
+           }//else if(statusInfo){
+        //     return next(AppError("Sorry, you can not perform this task"))
+        //   }
+          
 
           const dispatchLoading = await Booking.findOneAndUpdate(
               dispatchId,
@@ -88,13 +81,15 @@ export const loadedCtr = async (req, res, next) => {
         
 
           if(!trackId){
-              return next(AppError("Sorry evtol model is not found"))
-          }
+              return next(AppError("Tracking code not found. Either your tracking code is invalid or evtol not booked",404))
+          }//else if("LOADED"||"DELIVERING"||"DELIVERED"||"RETURNING"){
+            //return next(AppError("Sorry, you can not perform this task"))
+          //}
 
 
 
           const dispatchLoaded = await Booking.findOneAndUpdate(
-              dispatchId,
+              dispatchId,loggedUser,
               {
               status:"LOADED"
          },
@@ -122,9 +117,11 @@ export const deliveringCtr = async (req, res, next) => {
     
             const trackId = await Booking.findOne(dispatchId)
             
-    
+    const statusInfo = ["LOADING","DELIVERED","RETURNING"]
               if(!trackId){
-                  return next(AppError("Sorry evtol model is not found"))
+                  return next(AppError("Tracking code not found. Either your tracking code is invalid or evtol not booked",404))
+              }else if(!statusInfo){
+                return next(AppError("Sorry, you can not perform this task"))
               }
     
     
@@ -161,8 +158,10 @@ export const deliveredCtr = async (req, res, next) => {
             
     
               if(!trackId){
-                  return next(AppError("Sorry evtol model is not found"))
-              }
+                  return next(AppError("Tracking code not found. Either your tracking code is invalid or evtol not booked",404))
+              }//else if("RETURNING"){
+                //return next(AppError("Sorry, you can not perform this task"))
+              //}
     
     
     
@@ -193,13 +192,20 @@ export const returningCtr = async (req, res, next) => {
         try { 
             const dispatchId = req.params
             const loggedUser = req.userAuth
+            //const state = ["IDLE","LOADING","LOADED","DELIVERING","RETURNING"]
     
+            const state = "DELIVERED"
             const trackId = await Booking.findOne(dispatchId)
-            
+            const statusInfo = await Booking.findOne(state.status)
+            console.log(statusInfo);
     
               if(!trackId){
-                  return next(AppError("Sorry evtol model is not found"))
-              }
+                  return next(AppError("Tracking code not found. Either your tracking code is invalid or evtol not booked",404))
+               }
+                if(statusInfo === "DELIVERED"){
+                 return next(AppError("blablabla"))
+               }
+              
     
     
     
