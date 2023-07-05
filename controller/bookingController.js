@@ -10,7 +10,7 @@ export const searchForEvtolAndPrice = async(req,res,next) => {
     const amount = 27823
 
     if(battery <= "25%"){
-        next(AppError("Sorry we cant load you because the battery is low"))
+        next(AppError("Sorry we cant load you because the battery is low",601))
     }
     try {
         const user = await User.findById(req.userAuth)
@@ -38,6 +38,9 @@ export const searchForEvtolAndPrice = async(req,res,next) => {
 
 export const createBookingCtr = async (req, res, next) => {
     const {nameOfMedication,weight,trackingCode} = req.body;
+    if(weight > 500){
+        next(AppError("Weight must not be greater down 500",400))
+    }
     try {
         const searchId = req.params.id
 
