@@ -47,7 +47,7 @@ export const createBookingCtr = async (req, res, next) => {
         const eSearch = await Booking.findById(searchId)
 
         if(!eSearch){
-            return next(AppError("Sorry evtol model is not found"))
+            return next(AppError("Sorry evtol model is not found",404))
         }
 
 
