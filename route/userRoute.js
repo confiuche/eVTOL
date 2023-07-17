@@ -1,12 +1,15 @@
 import express from "express"
 import {
+    createPayment,
      createUserCtr, 
      displayUserByAdminCtr, 
      forgetPasswordCtr, 
+     getPayment, 
      passwordSettingCtr, 
      profileCtr, 
      profilePhotoUploadCtrl, 
      resetPasswordCtr, 
+     startPayment, 
      userLoginCtr 
     } from "../controller/userController.js";
 import { isLogin } from "../middlewears/isLogin.js";
@@ -36,7 +39,10 @@ userRoute.post("/reset-password", resetPasswordCtr)
 userRoute.put("/security",isLogin, passwordSettingCtr)
 //display all user by admin
 userRoute.get("/display-all-by-admin",isLogin,isAdmin,displayUserByAdminCtr)
-
+//paystack
+userRoute.post('/', isLogin, startPayment);
+userRoute.get('/createPayment', isLogin, createPayment);
+userRoute.get('/paymentDetails', isLogin, getPayment);
 
 
 export default userRoute;
