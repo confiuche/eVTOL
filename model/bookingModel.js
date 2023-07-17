@@ -49,7 +49,7 @@ const bookingSchema = new mongoose.Schema(
     status:{
         type:String,
         enum:["IDLE","LOADING","LOADED","DELIVERING","DELIVERED","RETURNING"],
-        default:"IDLE"
+        default:"IDLE",
     },
     location:{
         type:mongoose.Schema.Types.ObjectId,
