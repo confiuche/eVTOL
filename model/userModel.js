@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
     },
     password:{
         type:String,
-        required:[true,"password is required"],
+        //required:[true,"password is required"],
     },
     isBlocked:{
         type:Boolean,
@@ -64,6 +64,20 @@ const userSchema = new mongoose.Schema({
     reseTokenExpiration:{
         type:Date,
     },
+    amount: {
+        type: Number,
+        required: true
+      },
+    
+      reference: {
+        type: String,
+        required: true,
+        unique: true
+      },
+      status: {
+        type: String,
+        required: true
+      }
 },
 {
     timestamps:true,
