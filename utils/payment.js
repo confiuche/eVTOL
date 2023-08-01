@@ -1,15 +1,12 @@
 import express from "express"
 import request from "request";
-
 import dotenv from "dotenv";
+
+
 dotenv.config()
 
 
-//import { response } from "express";
-
 const paystack = (request) => {
-    //const MySecretKey = "Bearer sk_test_7b61c950faa6221c400d7d2135203bf51a9751d6"
-    //const MySecretKey = "sk_test_7b61c950faa6221c400d7d2135203bf51a9751d6"
     const MySecretKey = process.env.PAYSTACK_SECRET_KEY
     //console.log(MySecretKey);
 
@@ -49,7 +46,4 @@ const paystack = (request) => {
     return {initializePayment, verifyPayment};
 }
 
-//const {initializePayment, verifyPayment} = paystack
-//export default {initializePayment,verifyPayment}
 export default paystack
-//module.exports = paystack

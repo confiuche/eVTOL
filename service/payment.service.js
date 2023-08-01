@@ -1,18 +1,9 @@
 import express from 'express';
 import request from "request";
-
-//const request = require('request')
 import User from "../model/userModel.js";
-//const User = require('../model/userModel')
 import _ from "lodash"
-//const _ = require('lodash')
 import paystack from "../utils/payment.js";
-//import paystack from '../utils/payment.js';
-//import initializePayment from "../utils/payment.js"
-//import verifyPayment from "../utils/payment.js"
-//const {initializePayment, verifyPayment} = require('./utils/payment.js')(request);
-//const {initializePayment, verifyPayment} from '../utils/payment.js'
-//import {initializePayment, verifyPayment} from '../utils/payment.js'
+
 const {initializePayment, verifyPayment} = paystack(request)
 
 
@@ -87,4 +78,3 @@ class PaymentService{
 }
 
 export default PaymentService
-//module.exports = PaymentService
